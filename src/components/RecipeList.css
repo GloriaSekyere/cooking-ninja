@@ -1,0 +1,11 @@
+.recipe-card {
+  width: 300px;
+  padding: 15px;
+  text-align: center;
+  background-color: #fff;
+  box-shadow: 0 5px 10px gray;
+}
+
+.recipe-card a {
+  text-decoration: none;
+}

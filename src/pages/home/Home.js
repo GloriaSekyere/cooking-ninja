@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import './Home.css'
+import RecipeList from '../../components/RecipeList'
 
 function Home() {
   const { data:recipes, error, isPending } = useFetch("http://localhost:3000/recipes")
@@ -9,16 +10,7 @@ function Home() {
     <div className='home'>
       {error && <p className='error'>Error loading recipes...</p>}
       {isPending && <p className='loading'>Loading recipes...</p>}
-      {recipes && recipes.map(recipe => (
-        <div key={recipe.id} className='recipe-card'>
-          <h2>{recipe.title}</h2>
-          <p>Cooking time: {recipe.cookingTime}</p>
-          <p>{recipe.method.substring(0,99)}...</p>
-          <Link to={`/recipe/${recipe.id}`}>
-            Cook this
-          </Link>
-        </div>
-      ))}
+      {recipes && <RecipeList recipes={recipes} />}
     </div>
   )
 }
