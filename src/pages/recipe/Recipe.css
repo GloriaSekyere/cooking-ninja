@@ -1,0 +1,16 @@
+.detail-recipe {
+  box-shadow: 0 5px 10px gray;
+  background-color: #fff;
+  width: 50%;
+  margin: 25px auto;
+  text-align: center;
+  padding: 20px;
+}
+
+.detail-recipe h2 {
+  margin-bottom: 15px;
+}
+
+.detail-recipe li {
+  list-style-type: none;
+}
