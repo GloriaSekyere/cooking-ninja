@@ -11,6 +11,10 @@
   margin-bottom: 15px;
 }
 
+.detail-recipe ul {
+  margin: 15px 0;
+}
+
 .detail-recipe li {
   list-style-type: none;
 }
