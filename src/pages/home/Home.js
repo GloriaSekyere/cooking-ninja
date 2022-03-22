@@ -1,4 +1,3 @@
-import { Link } from 'react-router-dom'
 import { useFetch } from '../../hooks/useFetch'
 import './Home.css'
 import RecipeList from '../../components/RecipeList'
