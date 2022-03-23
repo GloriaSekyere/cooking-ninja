@@ -24,8 +24,30 @@
   font-weight: bold;
 }
 
+.nav form label {
+  display: flex;
+  align-items: center;
+}
+
+.nav form span {
+  color: #fff;
+  display: inline-block;
+  margin-right:10px;
+  font-size: 18px;
+  font-weight: bold;
+}
+
+.nav form input {
+  width: 350px;
+}
+
 .createBtn {
   border: 1.5px solid #fff;
   border-radius: 7.5px;
   padding: 10px 12.5px;
+}
+
+.createBtn:hover {
+  color:rgb(31, 122, 110);
+  background-color: #fff;
 }

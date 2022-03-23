@@ -1,11 +1,27 @@
 .recipe-card {
   width: 300px;
-  padding: 15px;
+  padding: 25px;
   text-align: center;
   background-color: #fff;
   box-shadow: 0 5px 10px gray;
+  margin-bottom: 25px;
+}
+
+.recipe-card h2 {
+  margin-bottom: 10px;
+}
+
+.recipe-card p {
+  margin-bottom: 10px;
 }
 
 .recipe-card a {
   text-decoration: none;
+  background-color: rgb(31, 122, 110);
+  border: none;
+  border-radius: 5px;
+  color: #fff;
+  padding: 10px;
+  margin-top: 20px;
+  display: block;
 }

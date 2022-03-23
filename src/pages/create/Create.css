@@ -1,6 +1,6 @@
 .create {
   width: 500px;
-  margin: 25px auto;
+  margin: 50px auto;
 }
 
 .create form {
@@ -54,6 +54,7 @@
   color: white;
   flex-basis: 25%;
   padding: 10px 0;
+  cursor: pointer;
 }
 
 
@@ -64,4 +65,5 @@
   width: 125px;
   margin: auto;
   padding: 10px 0;
+  cursor: pointer;
 }
