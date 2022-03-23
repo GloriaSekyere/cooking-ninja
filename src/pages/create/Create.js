@@ -2,6 +2,7 @@ import './Create.css'
 import { useState, useRef, useEffect } from 'react'
 import { useFetch } from '../../hooks/useFetch'
 import { useHistory } from 'react-router-dom'
+import { useTheme } from  '../../hooks/useTheme'
 
 function Create() {
   const [title, setTitle] = useState('')
@@ -12,6 +13,7 @@ function Create() {
   const ingredientInput = useRef(null)
   const { postData, data } = useFetch("http://localhost:3000/recipes", 'POST')
   const history = useHistory()
+  const { color } = useTheme()
 
   const handleSubmit = (e) => {
     e.preventDefault()
@@ -52,6 +54,7 @@ function Create() {
             type="text"
             onChange={e => setTitle(e.target.value)}
             value={title}
+            style={{ borderColor: color }}
           />
         </label>
 
@@ -62,6 +65,7 @@ function Create() {
             type="number"
             onChange={e => setCookingTime(e.target.value)}
             value={cookingTime}
+            style={{ borderColor: color }}
           />
         </label>
 
@@ -75,8 +79,12 @@ function Create() {
               onChange={e => setNewIngredient(e.target.value)}
               value={newIngredient}
               ref={ingredientInput}
+              style={{ borderColor: color }}
             />
-            <button onClick={handleAdd}>Add</button>
+            <button 
+              onClick={handleAdd}
+              style={{ background: color }}
+            >Add</button>
           </div>
           {ingredients.map(ing => <em key={ing}>{ing}, </em>)}
         </div>
@@ -86,10 +94,15 @@ function Create() {
           <textarea
             onChange={e => setMethod(e.target.value)}
             value={method}
+            style={{ borderColor: color }}
           />
         </label>
 
-        <input type="submit" value="Submit" />
+        <input 
+          type="submit" 
+          value="Submit"
+          style={{ background: color }}
+        />
       </form>
     </div>
   )

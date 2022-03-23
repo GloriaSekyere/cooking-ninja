@@ -46,8 +46,3 @@
   border-radius: 7.5px;
   padding: 10px 12.5px;
 }
-
-.createBtn:hover {
-  color:rgb(31, 122, 110);
-  background-color: #fff;
-}

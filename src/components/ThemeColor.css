@@ -1,0 +1,21 @@
+.theme-div {
+  width: 1200px;
+  height: 25px;
+  margin: 15px auto;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.theme-btns {
+  display: flex;
+  height: 150px;
+  width: 100%;
+}
+
+.theme-btn {
+  width: 25px;
+  height: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  margin-left: 5px;
+}
