@@ -25,6 +25,7 @@ const Navbar = () => {
           <label>
             <span>Search:</span>
             <input
+              id="search-input"
               type="text"
               value={term} 
               onChange={e => setTerm(e.target.value)}

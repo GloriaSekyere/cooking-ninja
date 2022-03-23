@@ -1,14 +1,27 @@
 import React from 'react'
 import { useTheme } from '../hooks/useTheme'
 import './ThemeColor.css'
+import lightIcon from '../assets/light.svg'
+import darkIcon from '../assets/dark.svg'
 
 const colors = ['rgb(31, 122, 110)', 'rgb(122, 57, 31)', 'rgb(72, 34, 133)']
 
 const ThemeColor = () => {
-  const { changeColor } = useTheme()
+  const { changeColor, mode, changeMode } = useTheme()
 
   return (
     <div className='theme-div'>
+      <div className='mode'>
+        {mode  === 'light' ? 
+          <img 
+            src={darkIcon} 
+            onClick={() => changeMode(mode  === 'light' ? 'dark' : 'light')} /> :
+          <img 
+            src={lightIcon} 
+            onClick={() => changeMode(mode  === 'light' ? 'dark' : 'light')} />
+        }
+      </div>
+
       <div className='theme-btns'>
         {colors.map(color => 
           <div 

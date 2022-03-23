@@ -15,7 +15,7 @@ function Search() {
 
   return (
     <div>
-      <h1 className='page-title'>Search Results for "{query}"</h1>
+      <h2 className='search-title'>Search Results for "{query}"</h2>
       <div className='search'>
         {error && <p className='error'>Error loading results...</p>}
         {isPending && <p className='loading'>Loading results...</p>}

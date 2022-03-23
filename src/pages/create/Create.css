@@ -9,6 +9,17 @@
   padding: 25px;
 }
 
+.dark .create form {
+  background-color: rgb(102, 102, 102);
+  color: rgb(224, 224, 224);
+  box-shadow: 0 5px 10px rgb(27, 27, 27);
+}
+
+.dark .title, .dark .cookingTime, 
+.dark textarea, .dark #ing {
+  background-color: rgb(184, 184, 184);
+}
+
 .create label {
   display: block;
   margin-bottom: 25px;

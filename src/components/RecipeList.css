@@ -7,8 +7,20 @@
   margin-bottom: 25px;
 }
 
+.dark .recipe-card {
+  background-color: rgb(102, 102, 102);
+  color: rgb(224, 224, 224);
+  box-shadow: 0 5px 10px rgb(27, 27, 27);
+}
+
 .recipe-card h2 {
-  margin-bottom: 10px;
+  text-align: center;
+  margin: 10px auto;
+  color: #333;
+}
+
+.dark .recipe-card h2 {
+  color: #fff;
 }
 
 .recipe-card p {

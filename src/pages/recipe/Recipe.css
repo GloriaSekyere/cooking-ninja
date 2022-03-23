@@ -4,7 +4,13 @@
   width: 50%;
   margin: 50px auto;
   text-align: center;
-  padding: 25px;
+  padding: 50px;
+}
+
+.dark .detail-recipe {
+  background-color: rgb(102, 102, 102);
+  color: rgb(224, 224, 224);
+  box-shadow: 0 5px 10px rgb(27, 27, 27);
 }
 
 .detail-recipe h2 {

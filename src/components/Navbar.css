@@ -41,6 +41,10 @@
   width: 350px;
 }
 
+.dark #search-input {
+  background-color: rgb(184, 184, 184);
+}
+
 .createBtn {
   border: 1.5px solid #fff;
   border-radius: 7.5px;
