@@ -16,18 +16,9 @@ function Recipe() {
   const [isPending, setIsPending] = useState(null)
 
   useEffect(() => {
-    if (error) {
-      setTimeout(() => {
-        history.push("/")
-      }, 2000)
-    }
-  }, [error, history])
-
-  useEffect(() => {
     setIsPending(true)
 
-    database.collection('recipes').doc(id).get()
-      .then(doc => {
+    const unsubscribe = database.collection('recipes').doc(id).onSnapshot(doc => {
         if (doc.exists) {
           setIsPending(false)
           setRecipe(doc.data())
@@ -36,12 +27,28 @@ function Recipe() {
           setIsPending(false)
           setError(true)
         }
-      })
-      .catch(err => {
-        setIsPending(false)
+      }, (err) => {
         setError(err.message)
+        setIsPending(false)
       })
+      
+    return () => unsubscribe()
+
   }, [id])
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        history.push("/")
+      }, 2000)
+    }
+  }, [error, history])
+
+  const handleUpdate = () => {
+    database.collection('recipes').doc(id).update({
+      title: 'Updated'
+    })
+  }
 
   return (
     <div>
@@ -54,6 +61,7 @@ function Recipe() {
           {recipe.ingredients.map(ing => <li key={ing}>{ing}</li>)}
         </ul>
         <p>{recipe.method}</p>
+        <button onClick={handleUpdate}>Update Title</button>
       </div>)}
     </div>
   )
