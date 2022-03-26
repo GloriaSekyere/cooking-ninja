@@ -5,6 +5,7 @@
   background-color: #fff;
   box-shadow: 0 5px 10px gray;
   margin-bottom: 25px;
+  position: relative;
 }
 
 .dark .recipe-card {
@@ -36,4 +37,10 @@
   padding: 10px;
   margin-top: 20px;
   display: block;
+}
+
+.delete {
+  position: absolute;
+  top: 15px;
+  right: 25px;
 }
