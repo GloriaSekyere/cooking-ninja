@@ -1,9 +1,20 @@
-import './RecipeList.css'
+import { database } from '../firebase/config'
 import { Link } from 'react-router-dom'
 import { useTheme } from  '../hooks/useTheme'
 
+// styles
+import './RecipeList.css'
+
+// assets
+import BinDark from '../assets/bin_dark.svg'
+import BinLight from '../assets/bin_light.svg'
+
 const RecipeList = ({ recipes }) => {
-  const { color } = useTheme()
+  const { color, mode } = useTheme()
+
+  const handleDelete = (id) => {
+    database.collection('recipes').doc(id).delete()
+  }
   
   return (
     <>
@@ -15,6 +26,20 @@ const RecipeList = ({ recipes }) => {
           <Link to={`/recipe/${recipe.id}`} style={{ background: color }}>
             Cook this
           </Link>
+          {mode === 'light' ? 
+            <img 
+              className='delete'
+              src={BinDark}
+              alt="delete icon"
+              onClick={() => handleDelete(recipe.id)}
+            /> :
+            <img 
+              className='delete'
+              src={BinLight}
+              alt="delete icon"
+              onClick={() => handleDelete(recipe.id)}
+            />
+          }
         </div>
       ))}
     </>
