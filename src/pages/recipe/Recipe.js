@@ -1,12 +1,47 @@
-import { useParams } from 'react-router-dom'
-import { useFetch } from '../../hooks/useFetch'
+import { useParams, useHistory } from 'react-router-dom'
+import { useEffect, useState } from 'react'
+import { database } from '../../firebase/config'
+
+// styles
 import './Recipe.css'
+
 
 function Recipe() {
 
   const { id } = useParams()
-  const url = "http://localhost:3000/recipes/" + id
-  const { data:recipe, error, isPending } = useFetch(url)
+  const history = useHistory()
+
+  const [recipe, setRecipe] = useState(null)
+  const [error, setError] = useState(null)
+  const [isPending, setIsPending] = useState(null)
+
+  useEffect(() => {
+    if (error) {
+      setTimeout(() => {
+        history.push("/")
+      }, 2000)
+    }
+  }, [error, history])
+
+  useEffect(() => {
+    setIsPending(true)
+
+    database.collection('recipes').doc(id).get()
+      .then(doc => {
+        if (doc.exists) {
+          setIsPending(false)
+          setRecipe(doc.data())
+        } 
+        else {
+          setIsPending(false)
+          setError(true)
+        }
+      })
+      .catch(err => {
+        setIsPending(false)
+        setError(err.message)
+      })
+  }, [id])
 
   return (
     <div>

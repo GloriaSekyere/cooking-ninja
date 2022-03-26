@@ -15,10 +15,14 @@ const ThemeColor = () => {
         {mode  === 'light' ? 
           <img 
             src={darkIcon} 
-            onClick={() => changeMode(mode  === 'light' ? 'dark' : 'light')} /> :
+            onClick={() => changeMode(mode  === 'light' ? 'dark' : 'light')}
+            alt="dark mode icon"
+          /> :
           <img 
             src={lightIcon} 
-            onClick={() => changeMode(mode  === 'light' ? 'dark' : 'light')} />
+            onClick={() => changeMode(mode  === 'light' ? 'dark' : 'light')}
+            alt="light mode icon"
+          />
         }
       </div>
 

@@ -1,9 +1,42 @@
-import { useFetch } from '../../hooks/useFetch'
-import './Home.css'
+import { useState, useEffect } from 'react'
+import { database } from '../../firebase/config'
+
+//components
 import RecipeList from '../../components/RecipeList'
 
+//styles
+import './Home.css'
+
+
 function Home() {
-  const { data:recipes, error, isPending } = useFetch("http://localhost:3000/recipes")
+  const [recipes, setRecipes] = useState(null)
+  const [error, setError] = useState(null)
+  const [isPending, setIsPending] = useState(null)
+
+  useEffect(() => {
+    setIsPending(true)
+
+    database.collection('recipes').get()
+      .then(snapshot => {
+        if (snapshot.empty) {
+          setError("No recipes to load")
+          setIsPending(false)
+        } 
+        else {
+          let results = []
+          snapshot.docs.forEach(recipe => {
+            console.log(recipe)
+            results.push({ id: recipe.id, ...recipe.data() })
+          })
+          setRecipes(results)
+          setIsPending(false)
+        }
+      })
+      .catch(err => {
+        setError(err.message)
+        setIsPending(false)
+      })
+  }, [])
 
   return (
     <div className='home'>
