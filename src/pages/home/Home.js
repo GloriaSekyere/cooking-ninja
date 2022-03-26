@@ -16,8 +16,7 @@ function Home() {
   useEffect(() => {
     setIsPending(true)
 
-    database.collection('recipes').get()
-      .then(snapshot => {
+    const unsubscribe = database.collection('recipes').onSnapshot((snapshot) => {
         if (snapshot.empty) {
           setError("No recipes to load")
           setIsPending(false)
@@ -31,16 +30,18 @@ function Home() {
           setRecipes(results)
           setIsPending(false)
         }
-      })
-      .catch(err => {
+      }, (err) => {
         setError(err.message)
         setIsPending(false)
       })
+
+    return () => unsubscribe()
+      
   }, [])
 
   return (
     <div className='home'>
-      {error && <p className='error'>Error loading recipes...</p>}
+      {error && <p className='error'>{error}</p>}
       {isPending && <p className='loading'>Loading recipes...</p>}
       {recipes && <RecipeList recipes={recipes} />}
     </div>
